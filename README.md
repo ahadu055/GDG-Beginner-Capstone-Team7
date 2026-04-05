@@ -24,4 +24,5 @@ A simple movie discovery website where users can browse, search, and save their 
 - Bethlehem Eshetu
 - Melat Endalamaw
 - Makbel Nega
+- Seble Sisay
 
