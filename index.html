@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieExplorer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineFind - Movie Discovery</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <header>
-        <div class="container">
-           <h1> MovieExplorer </h1>
-            <nav class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Popular</a>
-                <a href="#">Top Rated</a>
-                <a href="#">Now Playing</a>
-                <a href="#">Watchlist</a>
-            </nav>
 
-            <div class="search-container">
-                <input type="text" id="searchInput"  placeholder="Search Movies..." >
-                <button id="searchBtn">Search</button>
-            </div>
-        </div>
-    </header>
-
-    <main class="container">
-        <h1 id="pageTitle">Popular Movies</h1>
-        <div id="loading" class="loading" >Loading Movies</div>
-        <div id="error" class="error hidden" >Something went wrong</div>
-        <div id="moviesGrid" class="movies-grid"></div>
-        
-    </main>
-
- <div id="movieModal" class="modal hidden">
-    <div class="modal-content">
-        <div id="modalBody" class="modal-body"></div>
+  <header>
+    <div class="container">
+      <div class="logo">CineFind</div>
+      <nav>
+        <a href="#" onclick="showHome()">Home</a>
+        <a href="#" onclick="loadCategory('popular')">Popular</a>
+        <a href="#" onclick="loadCategory('top_rated')">Top Rated</a>
+        <a href="#" onclick="showGenres()">Genres</a>
+        <a href="#" onclick="showWatchlist()">Watchlist</a>
+      </nav>
+      
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search movies..." 
+               onkeyup="handleLiveSearch()">
+        <button onclick="searchMovies()">Search</button>
+      </div>
     </div>
- </div>
+  </header>
 
-    <footer>
+  <main class="container">
+    <div id="home-view">
+      <div class="tab-container">
+        <button onclick="switchTab('movie')" id="movie-tab" class="tab-btn active">Movies</button>
+        <button onclick="switchTab('tv')" id="tv-tab" class="tab-btn">TV Shows</button>
+      </div>
 
-    </footer>
-    <script src="script.js"></script>
+      <h1 id="pageTitle">Popular Movies</h1>
+      
+      <div id="loading" class="loading">Loading movies...</div>
+      <div id="error" class="error hidden"></div>
+      <div id="moviesGrid" class="movies-grid"></div>
+    </div>
+
+    <!-- Genre Section -->
+    <div id="genre-section" class="hidden">
+      <h2>Browse by Genre</h2>
+      <div class="genre-grid" id="genreGrid"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 GDG Beginner Track - Team 7 | CineFind</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
