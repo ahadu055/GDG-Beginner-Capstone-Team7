@@ -1,56 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CineFind - Movie Discovery</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cineHub</title>
 </head>
 <body>
-
-  <header>
+   <header>
     <div class="container">
-      <div class="logo">CineFind</div>
+      <div class="logo">CineHub</div>
       <nav>
-        <a href="#" onclick="showHome()">Home</a>
+        <a href="index.html" onclick="showHome()">Home</a>
         <a href="#" onclick="loadCategory('popular')">Popular</a>
         <a href="#" onclick="loadCategory('top_rated')">Top Rated</a>
-        <a href="#" onclick="showGenres()">Genres</a>
+        <a href="#" onclick="loadCategory('now_playing')">Now Playing</a>
         <a href="#" onclick="showWatchlist()">Watchlist</a>
       </nav>
       
       <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search movies..." 
-               onkeyup="handleLiveSearch()">
+               onkeypress="if(event.key === 'Enter') searchMovies()">
         <button onclick="searchMovies()">Search</button>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <div id="home-view">
-      <div class="tab-container">
-        <button onclick="switchTab('movie')" id="movie-tab" class="tab-btn active">Movies</button>
-        <button onclick="switchTab('tv')" id="tv-tab" class="tab-btn">TV Shows</button>
-      </div>
+    
+    <!--
+     FEATURED MOVIE SECTION:
+     - JS: dynamically update movie content and handle button actions
+     - CSS: style as a large, eye-catching banner at the top
+    -->
+    <section class="featured">
+        <h2>Featured Movie</h2>
+        <div class="featured-movie">
+            <img src="inception.jpg" alt="Inception Movie Poster" width="300">
+            <div class="featured-info">
+                <h3>Inception (2010)</h3>
+                <p>A thief who steals corporate secrets through dream-sharing technology is given a chance to erase his past.</p>
+                <button>Play</button>
+                <button>Details</button>
+            </div>
+        </div>
+    </section>
 
+    <div class="movies-header">
       <h1 id="pageTitle">Popular Movies</h1>
-      
-      <div id="loading" class="loading">Loading movies...</div>
-      <div id="error" class="error hidden"></div>
-      <div id="moviesGrid" class="movies-grid"></div>
+      <div class="filters">...</div>
+    </div>
+    
+    <!-- 
+     FILTER SECTION:
+     Allows users to filter movies by genre and release year.
+    - JS team: use the selected values (genre, year) to filter API results
+    - CSS team: style this as a horizontal toolbar or dropdown menu
+    -->
+    <div class="filters">
+        <label for="genre">Genre:</label>
+        <select id="genre">
+          <option value="">All</option>
+          <option value="action">Action</option>
+          <option value="comedy">Comedy</option>
+          <option value="drama">Drama</option>
+        </select>
+
+        <label for="year">Year:</label>
+        <select id="year">
+          <option value="">All</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
     </div>
 
-    <!-- Genre Section -->
-    <div id="genre-section" class="hidden">
-      <h2>Browse by Genre</h2>
-      <div class="genre-grid" id="genreGrid"></div>
+  
+    <!-- Loading & Error Section -->
+    <div id="loading" class="loading">Loading movies...</div>
+    <div id="error" class="error hidden"></div>
+    
+    <div id="moviesGrid" class="movies-grid"></div>
+
+    <!-- 
+     EMPTY STATE:
+     - JS: show this when no movies are found (e.g., search returns nothing)
+     - CSS: center the message nicely
+    -->
+    <div id="emptyState" class="hidden">
+        <p>No movies found!</p>
     </div>
+
+    <!-- 
+     WATCHLIST SECTION:
+     Shows movies saved by the user.
+     Hidden by default; JS will manage adding, removing, and displaying movies.
+    -->
+    <section id="watchlistSection" class="hidden">
+       <h2>My Watchlist</h2>
+       <div id="watchlistGrid" class="movies-grid"></div>
+    </section>
   </main>
+
+  <!-- Movie Detail Modal -->
+   <div id="movieModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalBody" class="modal-body">
+        <img id="modelPoster" src="" alt="Movie Poster">
+        <h2 id="modalTitle"></h2>
+        <p id="modelOverview"></p>
+
+        <p><strong>Release Date:</strong> <span id="modalDate"></span></p>
+        <p><strong>Rating:</strong> <span id="modalRating"></span></p>
+
+        <button onclick="addToWatchlist()">+ Add to Watchlist</button>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 GDG Beginner Track - Team 7 | CineFind</p>
+      <p>&copy; 2026 GDG Beginner Track - Team 7 | CineHub</p>
     </div>
   </footer>
 
