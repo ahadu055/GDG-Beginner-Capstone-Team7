@@ -1,6 +1,6 @@
  Movie Watchlist
 
-A clean and simple movie watchlist web application built with vanilla HTML, CSS, and JavaScript. Users can search for movies using the **TMDB API**, view details, and save movies to their personal watchlist — all data is persistently stored in the browser using **LocalStorage**.
+A clean and simple movie watchlist web application built with  HTML, CSS, and JavaScript. Users can search for movies using the **TMDB API**, view details, and save movies to their personal watchlist — all data is persistently stored in the browser using **LocalStorage**.
 
 
  Features
@@ -17,7 +17,7 @@ A clean and simple movie watchlist web application built with vanilla HTML, CSS,
 
 - HTML5
 - CSS3 (Responsive Design)
-- Vanilla JavaScript
+-  JavaScript
 - TMDB API (The Movie Database)
 
  How to Run the Project
