@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AuraStream | Discover Your Next Favorite Movie</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container navbar">
+        <div class="brand-logo" onclick="loadCategory('popular')">
+          AuraStream
+        </div>
+
+        <nav class="main-nav">
+          <ul class="nav-links">
+            <li>
+              <a href="#" class="nav-item" onclick="loadCategory('popular')"
+                >Popular</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-item" onclick="loadCategory('top_rated')"
+                >Top Rated</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-item" onclick="loadCategory('now_playing')"
+                >Trending</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="nav-item watchlist-link"
+                onclick="showWatchlist()"
+                >My Watchlist</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Find a movie..."
+            onkeypress="if (event.key === 'Enter') searchMovies();"
+          />
+          <button class="btn-search" onclick="searchMovies()">Search</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-wrapper container">
+      <div class="page-header">
+        <h1 id="pageTitle">Popular Movies</h1>
+      </div>
+
+      <section id="statusOverlay">
+        <div id="loading" class="spinner hidden">
+          <div class="loader"></div>
+        </div>
+        <div id="error" class="error-message hidden"></div>
+      </section>
+
+      <section id="moviesGrid" class="movies-grid"></section>
+    </main>
+
+    <aside id="movieModal" class="modal-overlay hidden">
+      <div class="modal-card">
+        <button class="close-modal" onclick="closeModal()">&times;</button>
+        <div id="modalBody" class="modal-body"></div>
+      </div>
+    </aside>
+
+    <footer class="app-footer">
+      <div class="container footer-content">
+        <p>&copy; 2026 AuraStream Media. Powered by TMDB API.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
