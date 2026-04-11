@@ -27,7 +27,7 @@ A clean and simple movie watchlist web application built with  HTML, CSS, and Ja
  How to Run the Project
 
 1. Clone or download the repository
-2. Open the project folder
+2. Open the MAIN FILE folder
 3. Double-click `index.html` (or open it with Live Server)
 
 > Note: You need an internet connection for the TMDB API to fetch movie data.
